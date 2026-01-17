@@ -15,8 +15,12 @@ describe('GatewayController', () => {
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(gatewayController.getHello()).toBe('Hello World!');
+    it('should return health status', () => {
+      const result = gatewayController.health();
+
+      expect(result).toHaveProperty('ok', true);
+      expect(result).toHaveProperty('service', 'Gateway');
+      expect(result).toHaveProperty('now');
     });
   });
 });
